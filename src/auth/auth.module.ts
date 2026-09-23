@@ -6,6 +6,8 @@ import { UserEntity } from './entity/user.entity.js';
 import { AuthGuard } from './guards/authentication.guard.js';
 import { JwtModule } from '@nestjs/jwt';
 import { jwtConstants } from './constants/constant.js';
+import { TodosModule } from '../todos/todos.module.js';
+import { TodoEntity } from '../todos/entity/todo.entity.js';
 
 @Module({
   imports: [TypeOrmModule.forFeature([UserEntity]), JwtModule.register({
@@ -17,6 +19,6 @@ import { jwtConstants } from './constants/constant.js';
     provide: 'APP_GUARD',
     useClass: AuthGuard,
   }],
-  controllers: [AuthController]
+  controllers: [AuthController],
 })
 export class AuthModule {}
